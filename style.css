@@ -1,0 +1,1905 @@
+/* =========================================================
+   BETWEEN AISHI — ULTRA ANIMATED EDITION (10000000X BETTER)
+========================================================= */
+
+/* COLOR PALETTE & VARIABLES */
+:root {
+    --butter-yellow: #F6E7A8;
+    --vanilla-cream: #FFF9E9;
+    --pastel-lemon: #FBEFAE;
+    --antique-gold: #D9BD83;
+    --warm-brown: #927A55;
+    --ink-brown: #594832;
+    --soft-pink: #F5D9D5;
+    --paper: #fffdf6;
+    --paper-deep: #fff8e8;
+    --shadow-soft: 0 12px 32px rgba(89, 72, 50, 0.09);
+    --shadow-lift: 0 22px 45px rgba(89, 72, 50, 0.18);
+    --ease-sweet: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.2, 0.75, 0.25, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* PAGE & GLOBAL AMBIENT BACKGROUND */
+body {
+    min-height: 100vh;
+    background: var(--vanilla-cream);
+    color: var(--ink-brown);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Floating Magical Background Dust/Orbs & Sparkles */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(251, 239, 174, 0.6) 0px, transparent 50px),
+        radial-gradient(circle at 80% 70%, rgba(245, 217, 213, 0.6) 0px, transparent 60px),
+        radial-gradient(circle at 50% 50%, rgba(217, 189, 131, 0.25) 0px, transparent 90px),
+        radial-gradient(circle at 35% 85%, rgba(246, 231, 168, 0.4) 0px, transparent 45px);
+    pointer-events: none;
+    z-index: 0;
+    animation: ambientShift 12s ease-in-out infinite alternate;
+}
+
+/* Dynamic Floating Star Spores */
+body::after {
+    content: "✨     ✧        ✦      ✨          ✧";
+    position: fixed;
+    inset: 0;
+    font-size: 16px;
+    color: var(--antique-gold);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    align-items: space-around;
+    justify-content: space-around;
+    animation: floatSparks 15s linear infinite;
+}
+
+@keyframes floatSparks {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.4; }
+    80% { opacity: 0.4; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ULTRA SCREEN TRANSITION ANIMATIONS */
+.screen-enter {
+    animation: screenEnterAnimation 0.7s var(--ease-smooth) both;
+}
+
+@keyframes screenEnterAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97) rotateX(4deg);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+        filter: blur(0);
+    }
+}
+
+/* =====================================
+   MAGICAL LOADING SCREEN OVERLAY
+===================================== */
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: radial-gradient(circle, #fffdf6 0%, #f6e7a8 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#loading-screen.is-leaving {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.05);
+}
+
+.loader-heart {
+    font-size: 55px;
+    animation: loaderHeartBeat 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    filter: drop-shadow(0 10px 20px rgba(146, 122, 85, 0.3));
+}
+
+.loader-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 5px;
+    color: var(--warm-brown);
+    text-transform: uppercase;
+    animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderHeartBeat {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.28) rotate(8deg); }
+}
+
+/* =====================================
+   NEW WIDGETS: CANDLELIGHT TOGGLE & MILESTONE RIBBON
+===================================== */
+.candlelight-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: rgba(255, 249, 233, 0.92);
+    border: 1px solid var(--antique-gold);
+    border-radius: 30px;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ink-brown);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s var(--ease-sweet);
+}
+
+.candlelight-toggle:hover {
+    background: var(--butter-yellow);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 25px rgba(146, 122, 85, 0.25);
+}
+
+.milestone-ribbon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 18px;
+    background: rgba(255, 249, 233, 0.92);
+    border: 1px solid var(--antique-gold);
+    border-radius: 30px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(10px);
+    animation: appear 0.8s var(--ease-sweet) both;
+}
+
+.milestone-counter {
+    display: flex;
+    flex-direction: column;
+}
+
+.milestone-eyebrow {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--warm-brown);
+}
+
+.milestone-digits {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--ink-brown);
+    display: flex;
+    gap: 6px;
+}
+
+.random-memory-btn {
+    padding: 6px 14px;
+    background: var(--butter-yellow);
+    border: 1px solid var(--antique-gold);
+    border-radius: 20px;
+    font-size: 11px;
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-sweet);
+}
+
+.random-memory-btn:hover {
+    background: var(--antique-gold);
+    color: #fff;
+    transform: scale(1.06);
+    box-shadow: 0 4px 12px rgba(146, 122, 85, 0.2);
+}
+
+/* =====================================
+   INTERACTIVE 3D FLIPPABLE POLAROID LIGHTBOX MODAL
+===================================== */
+.polaroid-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeInModal 0.35s ease;
+}
+
+.polaroid-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(39, 31, 23, 0.82);
+    backdrop-filter: blur(14px);
+    animation: fadeInModal 0.35s ease;
+}
+
+.polaroid-flip-stage {
+    position: relative;
+    z-index: 2;
+    width: min(380px, 92vw);
+    perspective: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    animation: scaleUpModal 0.5s var(--ease-sweet) both;
+}
+
+.polaroid-flip-card {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    border-radius: 6px;
+}
+
+.polaroid-flip-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.polaroid-face {
+    position: absolute;
+    inset: 0;
+    background: #fffdf6;
+    border: 1px solid var(--antique-gold);
+    padding: 18px 18px 26px 18px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 6px;
+    box-shadow: inset 0 0 20px rgba(217, 189, 131, 0.15);
+}
+
+.polaroid-front img {
+    width: 100%;
+    height: 74%;
+    object-fit: cover;
+    background: #f7f3e8;
+    border-radius: 2px;
+    transition: transform 0.5s ease;
+}
+
+.polaroid-front img:hover {
+    transform: scale(1.02);
+}
+
+.lightbox-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--ink-brown);
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.polaroid-back {
+    transform: rotateY(180deg);
+    background: #fffaf0;
+    padding: 28px;
+    text-align: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.polaroid-back-stamp {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--warm-brown);
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+}
+
+.polaroid-back-date {
+    font-size: 13px;
+    color: var(--antique-gold);
+    font-style: italic;
+}
+
+.polaroid-back-note {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-brown);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.polaroid-back-sign {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--warm-brown);
+}
+
+.polaroid-lightbox-controls {
+    display: flex;
+    gap: 14px;
+}
+
+.polaroid-lightbox-controls button {
+    padding: 9px 20px;
+    background: var(--butter-yellow);
+    border: 1px solid var(--antique-gold);
+    border-radius: 25px;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-sweet);
+    box-shadow: 0 4px 12px rgba(89,72,50,0.1);
+}
+
+.polaroid-lightbox-controls button:hover {
+    background: var(--antique-gold);
+    color: #fff;
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 20px rgba(146, 122, 85, 0.25);
+}
+
+/* =====================================
+   VINTAGE VINYL MUSIC PLAYER WIDGET
+===================================== */
+.vinyl-player-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 998;
+    background: rgba(255, 249, 233, 0.94);
+    border: 1px solid var(--antique-gold);
+    border-radius: 40px;
+    padding: 9px 18px 9px 9px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: appear 1s var(--ease-sweet) both;
+}
+
+.vinyl-player-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.vinyl-disc {
+    width: 44px;
+    height: 44px;
+    background: #1a1512;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    border: 2px solid var(--antique-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s var(--ease-sweet);
+}
+
+.vinyl-disc:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.vinyl-disc.is-spinning {
+    animation: vinylSpin 2.8s linear infinite;
+}
+
+@keyframes vinylSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.vinyl-grooves {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,0.25);
+}
+
+.vinyl-label {
+    width: 16px;
+    height: 16px;
+    background: var(--soft-pink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: var(--ink-brown);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.song-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--ink-brown);
+    font-family: 'Playfair Display', serif;
+}
+
+.song-artist {
+    font-size: 10px;
+    color: var(--warm-brown);
+}
+
+.player-progress-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9px;
+    color: var(--warm-brown);
+}
+
+.progress-bar-bg {
+    width: 75px;
+    height: 4px;
+    background: #e5d7b8;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--antique-gold);
+    transition: width 0.1s linear;
+}
+
+/* =====================================
+1. LOGIN SCREEN & GLOWING CARD
+===================================== */
+.login-screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+    z-index: 1;
+    background:
+        radial-gradient(circle at 15% 20%, #FBEFAE 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, #F5D9D5 0%, transparent 35%),
+        var(--vanilla-cream);
+}
+
+.login-screen::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(246, 231, 168, 0.6) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    animation: ambientShift 8s ease-in-out infinite alternate;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 252, 244, 0.9));
+    border: 1px solid var(--antique-gold);
+    border-radius: 18px;
+    padding: 48px 42px;
+    text-align: center;
+    box-shadow: 0 30px 70px rgba(89, 72, 50, 0.14), inset 0 0 20px rgba(255, 255, 255, 0.7);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(12px);
+    animation: appear 1.1s var(--ease-sweet) both;
+    transition: transform 0.4s var(--ease-sweet), box-shadow 0.4s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 35px 80px rgba(89, 72, 50, 0.18);
+}
+
+.small-decoration {
+    color: var(--antique-gold);
+    font-size: 26px;
+    margin-bottom: 18px;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    color: var(--warm-brown);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 8vw, 48px);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 19px;
+    color: var(--warm-brown);
+    margin-bottom: 20px;
+}
+
+.divider {
+    color: var(--antique-gold);
+    margin: 20px 0 25px;
+    letter-spacing: 5px;
+}
+
+#login-form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    margin-bottom: 20px;
+    border: 1px solid #E5D7B8;
+    border-radius: 8px;
+    background: #FFFCF4;
+    color: var(--ink-brown);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    outline: none;
+    transition: all 0.35s var(--ease-smooth);
+}
+
+input:focus {
+    border-color: var(--antique-gold);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(217, 189, 131, 0.25), 0 4px 15px rgba(89, 72, 50, 0.1);
+    transform: translateY(-2px);
+}
+
+input::placeholder {
+    color: #B7A98D;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 65px;
+}
+
+.show-password {
+    position: absolute;
+    right: 14px;
+    top: 13px;
+    border: none;
+    background: transparent;
+    color: var(--warm-brown);
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.show-password:hover {
+    color: var(--ink-brown);
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--butter-yellow);
+    color: var(--ink-brown);
+    border: 1px solid var(--antique-gold);
+    border-radius: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-sweet);
+}
+
+.login-button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.login-button:hover::after {
+    opacity: 1;
+}
+
+.login-button span {
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.login-button:hover span {
+    transform: translateX(6px);
+}
+
+.login-button:hover {
+    background: var(--antique-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(146, 122, 85, 0.3);
+}
+
+.login-button:active {
+    transform: scale(0.97);
+}
+
+.login-message {
+    min-height: 20px;
+    margin: -8px 0 12px;
+    font-size: 14px;
+    color: #A35F51;
+    text-align: center;
+    animation: shakeError 0.4s ease;
+}
+
+.bottom-note {
+    margin-top: 25px;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--warm-brown);
+}
+
+/* STICKERS WITH CUTE BOUNCING HOVERS */
+.sticker {
+    position: absolute;
+    z-index: 1;
+    font-size: 42px;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 15px rgba(89,72,50,0.15));
+    transition: transform 0.35s var(--ease-bounce);
+}
+
+.sticker:hover {
+    transform: scale(1.35) rotate(15deg);
+}
+
+.sticker-pudding { top: 15%; left: 15%; }
+.sticker-cloud { top: 18%; right: 15%; animation-delay: 1s; }
+.sticker-bunny { bottom: 15%; left: 16%; animation-delay: 2s; }
+.sticker-bow { bottom: 18%; right: 16%; animation-delay: 0.5s; }
+
+
+/* =====================================
+2. WELCOME LETTER & UNFOLD ANIMATION
+===================================== */
+.welcome-screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 20px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 15%, #FBEFAE, transparent 35%),
+        radial-gradient(circle at 90% 85%, #F5D9D5, transparent 35%),
+        var(--vanilla-cream);
+    z-index: 1;
+}
+
+.welcome-decoration {
+    position: absolute;
+    top: 8%;
+    color: var(--antique-gold);
+    font-size: 28px;
+    letter-spacing: 8px;
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.welcome-letter {
+    width: 100%;
+    max-width: 650px;
+    padding: 55px 60px;
+    background: #FFFCF4;
+    border: 1px solid var(--antique-gold);
+    box-shadow: 0 25px 60px rgba(89, 72, 50, 0.18);
+    position: relative;
+    animation: letterUnfold 1.2s var(--ease-sweet) both;
+    transform-origin: top center;
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.welcome-letter:hover {
+    box-shadow: 0 30px 75px rgba(89, 72, 50, 0.22);
+}
+
+.letter-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-align: center;
+    color: var(--warm-brown);
+    margin-bottom: 35px;
+}
+
+.welcome-letter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.letter-divider {
+    color: var(--antique-gold);
+    margin-bottom: 25px;
+}
+
+.letter-content p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--ink-brown);
+    margin-bottom: 18px;
+}
+
+.letter-ending {
+    font-style: italic;
+    margin-top: 25px;
+}
+
+.letter-signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-top: 35px;
+}
+
+.letter-signature span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--warm-brown);
+}
+
+.continue-button {
+    display: block;
+    margin: 40px auto 0;
+    padding: 14px 32px;
+    background: var(--butter-yellow);
+    color: var(--ink-brown);
+    border: 1px solid var(--antique-gold);
+    border-radius: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.4s var(--ease-sweet);
+}
+
+.continue-button:hover {
+    background: var(--antique-gold);
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 28px rgba(146, 122, 85, 0.25);
+}
+
+.continue-button span {
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.continue-button:hover span {
+    transform: translateX(6px);
+}
+
+
+/* =====================================
+3. MAIN COLLECTION PAGE & HOVER CARDS
+===================================== */
+.collection-screen {
+    min-height: 100vh;
+    padding: 65px 25px;
+    background:
+        radial-gradient(circle at top left, #fbeefa, transparent 35%),
+        linear-gradient(135deg, #fff9e9, #f6e7a8);
+    animation: collectionAppear 0.8s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.collection-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 55px;
+}
+
+.collection-subtitle {
+    color: #927a55;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.collection-header h1 {
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(45px, 8vw, 75px);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.collection-description {
+    color: #927a55;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.collection-intro {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.intro-decoration {
+    color: #c6a76c;
+    font-size: 25px;
+}
+
+.collection-intro h2 {
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.collection-intro p {
+    color: #927a55;
+    font-size: 13px;
+}
+
+.collection-grid {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* 3D TILT EFFECT & GLOW ON CARDS */
+.collection-card {
+    position: relative;
+    background: rgba(255, 249, 233, 0.94);
+    border: 1px solid #e7d6a9;
+    border-radius: 12px;
+    padding: 38px 32px;
+    min-height: 250px;
+    box-shadow: 0 12px 30px rgba(89, 72, 50, 0.09);
+    transition: all 0.45s var(--ease-sweet);
+}
+
+.collection-card:hover {
+    transform: translateY(-12px) rotate(-0.8deg) scale(1.015);
+    box-shadow: 0 25px 48px rgba(89, 72, 50, 0.18);
+    background: rgba(255, 253, 245, 0.99);
+    border-color: var(--antique-gold);
+}
+
+.card-sticker {
+    position: absolute;
+    top: 22px;
+    right: 25px;
+    font-size: 30px;
+    transition: transform 0.4s var(--ease-bounce);
+}
+
+.collection-card:hover .card-sticker {
+    transform: scale(1.38) rotate(18deg);
+}
+
+.card-number {
+    color: #b39a69;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.collection-card h3 {
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.collection-card > p:not(.card-number) {
+    color: #927a55;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 45px;
+}
+
+.open-section-button {
+    margin-top: 15px;
+    padding: 11px 22px;
+    border: 1px solid #d9bd83;
+    background: #f6e7a8;
+    color: #594832;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.35s var(--ease-sweet);
+}
+
+.open-section-button:hover {
+    background: #e9d28e;
+    transform: translateX(8px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(89, 72, 50, 0.14);
+}
+
+.collection-footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #927a55;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+}
+
+
+/* =====================================
+4. UNSPOKEN PAGES, JARS & ENVELOPES
+===================================== */
+.unspoken-screen,
+.feelings-screen,
+.final-notes-screen {
+    min-height: 100vh;
+    padding: 45px 25px 70px;
+    background: linear-gradient(145deg, #fff9e9, #f6e7a8);
+    animation: collectionAppear 0.6s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.section-header {
+    max-width: 850px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 35px;
+    padding: 10px 18px;
+    background: rgba(246, 231, 168, 0.5);
+    border: 1px solid #d9bd83;
+    color: #927a55;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.35s var(--ease-sweet);
+}
+
+.back-button:hover {
+    background: var(--butter-yellow);
+    transform: translateX(-6px);
+    color: var(--ink-brown);
+    box-shadow: 0 4px 12px rgba(89,72,50,0.1);
+}
+
+.section-label {
+    color: #b39a69;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section-header h2 {
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 6vw, 58px);
+    margin: 10px 0;
+}
+
+.section-header > p:last-child {
+    color: #927a55;
+    font-size: 13px;
+}
+
+.envelope-grid,
+.jar-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.envelope-card,
+.jar-card {
+    min-height: 190px;
+    padding: 25px 15px;
+    background: #fff9e9;
+    border: 1px solid #e3d1a5;
+    border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(89, 72, 50, 0.08);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.4s var(--ease-sweet);
+    position: relative;
+    overflow: visible !important;
+}
+
+.envelope-card:hover,
+.jar-card:hover {
+    transform: translateY(-12px) rotate(-1.2deg) scale(1.025);
+    box-shadow: 0 22px 40px rgba(89, 72, 50, 0.18);
+    background: #fff5d7;
+    border-color: var(--antique-gold);
+}
+
+/* TACTILE ENVELOPE FLAP & WAX SEAL */
+.envelope-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 52%;
+    background: linear-gradient(135deg, rgba(212, 163, 115, 0.35), rgba(188, 108, 37, 0.2));
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+}
+
+.envelope-card:hover::before {
+    transform: rotateX(180deg);
+}
+
+.envelope-card::after {
+    content: "♡";
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    background: var(--antique-gold, #d4a373);
+    color: #fff;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+    transition: all 0.35s var(--ease-bounce);
+    z-index: 3;
+}
+
+.envelope-card:hover::after {
+    background: #bc6c25;
+    transform: scale(1.25) rotate(15deg);
+}
+
+.envelope-icon,
+.jar-icon {
+    font-size: 42px;
+    transition: transform 0.4s var(--ease-bounce);
+}
+
+.envelope-card:hover .envelope-icon,
+.jar-card:hover .jar-icon {
+    transform: scale(1.25) translateY(-5px);
+}
+
+.jar-card:hover .jar-icon {
+    transform: rotate(-12deg) scale(1.25);
+}
+
+.envelope-title,
+.jar-title {
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.envelope-caption,
+.jar-caption {
+    color: #a58d63;
+    font-size: 11px;
+}
+
+/* OPENED LETTERS & PAPERS WITH SMOOTH UNFOLD */
+.letter-viewer,
+.feeling-letter,
+.final-note-card {
+    max-width: 700px;
+    margin: 35px auto 0;
+    animation: letterUnfold 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.letter-paper,
+.feeling-paper {
+    padding: clamp(25px, 6vw, 60px);
+    background: #fffaf0;
+    border: 1px solid #e7d9b8;
+    box-shadow: 0 18px 45px rgba(89, 72, 50, 0.16);
+    min-height: 400px;
+    text-align: left;
+    position: relative;
+    border-radius: 6px;
+}
+
+.letter-paper-label,
+.library-book-category {
+    color: #b39a69;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.letter-paper-decoration {
+    color: #c6a76c;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.letter-paper h3,
+.feeling-paper h3 {
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.letter-paper-content,
+.feeling-content {
+    color: #725e42;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.9;
+}
+
+.letter-paper-content p,
+.feeling-content p {
+    margin-bottom: 18px;
+    animation: fadeInText 0.8s ease both;
+}
+
+.letter-paper-ending {
+    color: #927a55;
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    margin-top: 35px;
+}
+
+.letter-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.letter-navigation button,
+.close-letter-button,
+.close-feeling-button {
+    padding: 10px 18px;
+    background: #f6e7a8;
+    border: 1px solid #d9bd83;
+    border-radius: 8px;
+    color: #594832;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-sweet);
+}
+
+.letter-navigation button:hover:not(:disabled),
+.close-letter-button:hover,
+.close-feeling-button:hover {
+    background: var(--antique-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(89,72,50,0.15);
+}
+
+.letter-navigation button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#letter-counter {
+    color: #927a55;
+    font-size: 12px;
+}
+
+.close-letter-button {
+    display: block;
+    margin: 18px auto 0;
+    background: transparent;
+}
+
+
+/* =====================================
+5. JAR LIBRARY SHELF
+===================================== */
+.library-button {
+    display: block;
+    margin: 0 auto 25px;
+    padding: 12px 24px;
+    background: #f6e7a8;
+    color: #594832;
+    border: 1px solid #d9bd83;
+    border-radius: 28px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-sweet);
+}
+
+.library-button:hover {
+    background: var(--antique-gold);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 22px rgba(146, 122, 85, 0.22);
+}
+
+.jar-library {
+    max-width: 950px;
+    margin: 35px auto;
+    animation: collectionAppear 0.5s ease;
+}
+
+.library-shelf {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.library-book {
+    position: relative;
+    padding: 24px;
+    background: #fff9e9;
+    border: 1px solid #e3d1a5;
+    border-left: 6px solid #d9bd83;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.38s var(--ease-sweet);
+}
+
+.library-book:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 18px 35px rgba(89, 72, 50, 0.15);
+    border-color: var(--antique-gold);
+}
+
+.library-letter-paper {
+    padding: clamp(25px, 6vw, 60px);
+    background: #fffaf0;
+    border: 1px solid #e7d9b8;
+    box-shadow: 0 18px 45px rgba(89, 72, 50, 0.16);
+}
+
+
+/* =====================================
+6. MEMORY BOOK ARCHIVE (POLAROID BOOK)
+===================================== */
+.archive-screen {
+    min-height: 100vh;
+    padding: 50px 20px 80px;
+    background:
+        radial-gradient(circle at 10% 15%, rgba(245, 217, 213, 0.45), transparent 30%),
+        radial-gradient(circle at 90% 85%, rgba(251, 239, 174, 0.65), transparent 35%),
+        linear-gradient(145deg, #fffaf0, #f6e7a8);
+    z-index: 1;
+    position: relative;
+}
+
+.photo-book {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 55px 50px 45px;
+    background: #fffdf6;
+    border: 1px solid #e3d1a5;
+    border-radius: 8px 18px 18px 8px;
+    box-shadow:
+        0 30px 70px rgba(89, 72, 50, 0.18),
+        10px 0 0 #ebdcb8,
+        14px 0 0 #fff8e8,
+        24px 0 40px rgba(89, 72, 50, 0.12);
+    transform-origin: left center;
+    animation: bookOpenAnimation 0.85s var(--ease-smooth) both;
+}
+
+.photo-book::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 28px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(201, 165, 102, 0.5), transparent);
+}
+
+.photo-book-heading {
+    text-align: center;
+    margin-bottom: 45px;
+    border-bottom: 1px dashed #e5d7b8;
+    padding-bottom: 25px;
+}
+
+.photo-book-heading span {
+    color: #b39a69;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-family: 'Playfair Display', serif;
+}
+
+.photo-book-heading h3 {
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.photo-book-heading p {
+    color: #927a55;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* POLAROID GRID */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 30px;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.memory-photo {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e8dec2;
+    padding: 14px 14px 22px 14px;
+    box-shadow: 0 12px 28px rgba(89, 72, 50, 0.1);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.45s var(--ease-sweet);
+}
+
+.memory-photo:nth-child(odd) {
+    transform: rotate(-1.8deg);
+}
+
+.memory-photo:nth-child(even) {
+    transform: rotate(1.8deg);
+    margin-top: 15px;
+}
+
+.memory-photo:hover {
+    z-index: 5;
+    transform: translateY(-12px) rotate(0deg) scale(1.035);
+    box-shadow: 0 28px 50px rgba(89, 72, 50, 0.22);
+    border-color: var(--antique-gold);
+}
+
+.polaroid-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #f7f3e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.polaroid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.75s var(--ease-smooth);
+}
+
+.memory-photo:hover .polaroid-image img {
+    transform: scale(1.09);
+}
+
+.photo-caption {
+    margin-top: 15px;
+    color: #594832;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.photo-date {
+    display: block;
+    margin-top: 4px;
+    color: #b39a69;
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+/* NAVIGATION BUTTONS */
+.photo-book-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px dashed #e5d7b8;
+}
+
+.photo-book-navigation button {
+    padding: 10px 24px;
+    background: var(--butter-yellow);
+    color: var(--ink-brown);
+    border: 1px solid var(--antique-gold);
+    border-radius: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-sweet);
+}
+
+.photo-book-navigation button:hover:not(:disabled) {
+    background: var(--antique-gold);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 22px rgba(146, 122, 85, 0.22);
+}
+
+.photo-book-navigation button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+#photo-page-counter {
+    color: var(--warm-brown);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+
+/* =====================================
+7. KEYFRAME ANIMATIONS & SPECIAL EFFECTS
+===================================== */
+@keyframes jarShakeAndOpen {
+    0% { transform: scale(1) rotate(0deg); }
+    12% { transform: scale(1.1) rotate(-10deg); }
+    25% { transform: scale(1.1) rotate(10deg); }
+    38% { transform: scale(1.15) rotate(-8deg); }
+    52% { transform: scale(1.15) rotate(8deg); }
+    68% { transform: scale(1.05) rotate(-4deg); }
+    85% { transform: scale(1.02) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.jar-card.is-shaking {
+    animation: jarShakeAndOpen 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes letterUnfoldSequence {
+    0% {
+        opacity: 0;
+        transform: translateY(70px) scale(0.5) rotateX(55deg);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(-12px) scale(0.96) rotateX(10deg);
+    }
+    75% {
+        opacity: 1;
+        transform: translateY(4px) scale(1.02) rotateX(-2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-14px) rotate(5deg);
+    }
+}
+
+@keyframes letterUnfold {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9) rotateX(-18deg);
+        clip-path: inset(0 0 100% 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes collectionAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bookOpenAnimation {
+    from {
+        opacity: 0;
+        transform: perspective(1200px) rotateY(-15deg) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(1200px) rotateY(0deg) scale(1);
+    }
+}
+
+@keyframes ambientShift {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.06) translate(18px, -12px); }
+    100% { transform: scale(1) translate(0, 0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUpModal {
+    from { opacity: 0; transform: scale(0.88) translateY(25px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* AUTO-SUNSET / MIDNIGHT MODE STYLING */
+body.auto-midnight-mode,
+body.candlelight-mode {
+    background-color: #1a1512 !important;
+    color: #f4ebd0 !important;
+}
+
+body.auto-midnight-mode .login-card,
+body.auto-midnight-mode .welcome-letter,
+body.auto-midnight-mode .collection-card,
+body.auto-midnight-mode .envelope-card,
+body.auto-midnight-mode .jar-card,
+body.auto-midnight-mode .letter-paper,
+body.auto-midnight-mode .feeling-paper,
+body.auto-midnight-mode .photo-book,
+body.auto-midnight-mode .library-book,
+body.candlelight-mode .login-card,
+body.candlelight-mode .welcome-letter,
+body.candlelight-mode .collection-card,
+body.candlelight-mode .envelope-card,
+body.candlelight-mode .jar-card,
+body.candlelight-mode .letter-paper,
+body.candlelight-mode .feeling-paper,
+body.candlelight-mode .photo-book,
+body.candlelight-mode .library-book {
+    background: rgba(42, 35, 30, 0.94) !important;
+    border-color: #6b5b4e !important;
+    color: #f4ebd0 !important;
+}
+/* =====================================
+   GLASS JAR POPUP MODAL ANIMATION
+===================================== */
+.jar-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(39, 31, 23, 0.75);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.jar-popup-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.jar-popup-card {
+    width: 100%;
+    max-width: 480px;
+    background: linear-gradient(145deg, rgba(255, 253, 246, 0.98), rgba(255, 248, 232, 0.95));
+    border: 2px solid var(--antique-gold);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(89, 72, 50, 0.3), inset 0 0 25px rgba(255, 255, 255, 0.8);
+    transform: scale(0.7) translateY(40px) rotate(-3deg);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.jar-popup-overlay.is-active .jar-popup-card {
+    transform: scale(1) translateY(0) rotate(0deg);
+}
+
+.jar-popup-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: floatJar 3s ease-in-out infinite;
+}
+
+@keyframes floatJar {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(4deg); }
+}
+
+.jar-popup-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--ink-brown);
+    margin-bottom: 15px;
+}
+
+.jar-popup-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.8;
+    color: var(--warm-brown);
+    margin-bottom: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0 10px;
+}
+
+/* =====================================
+   CONSTELLATION OF US (STAR MAP SCREEN)
+===================================== */
+.constellation-screen {
+    min-height: 100vh;
+    padding: 45px 25px 70px;
+    background: radial-gradient(circle at center, #2a221b 0%, #15100d 100%);
+    color: #f4ebd0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.constellation-screen .section-header h2 {
+    color: #f6e7a8;
+}
+
+.constellation-screen .section-header p,
+.constellation-screen .section-label,
+.constellation-screen .back-button {
+    color: #d9bd83 !important;
+    border-color: #d9bd83 !important;
+}
+
+.star-map-canvas {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 550px;
+    margin: 0 auto;
+    background: rgba(25, 20, 16, 0.6);
+    border: 1px solid rgba(217, 189, 131, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(217, 189, 131, 0.05);
+    overflow: hidden;
+}
+
+.star-node {
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 2;
+}
+
+.star-node:hover {
+    transform: translate(-50%, -50%) scale(1.3);
+}
+
+.star-icon {
+    font-size: 26px;
+    color: #f6e7a8;
+    filter: drop-shadow(0 0 8px rgba(246, 231, 168, 0.8));
+    animation: starPulse 2.5s ease-in-out infinite alternate;
+}
+
+.star-node:nth-child(odd) .star-icon {
+    animation-delay: 1s;
+}
+
+.star-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #d9bd83;
+    background: rgba(26, 21, 18, 0.85);
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(217, 189, 131, 0.4);
+    white-space: nowrap;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.star-node:hover .star-label {
+    opacity: 1;
+    background: #f6e7a8;
+    color: #1a1512;
+}
+
+@keyframes starPulse {
+    0% { transform: scale(0.9); opacity: 0.6; filter: drop-shadow(0 0 4px rgba(246, 231, 168, 0.4)); }
+    100% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 12px rgba(246, 231, 168, 1)); }
+}
+
+/* Star Memory Popup Card */
+.star-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(21, 16, 13, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeInModal 0.3s ease;
+}
+
+.star-popup-card {
+    width: 100%;
+    max-width: 450px;
+    background: linear-gradient(145deg, #2a221b, #1f1813);
+    border: 2px solid #d9bd83;
+    border-radius: 16px;
+    padding: 35px 30px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(217, 189, 131, 0.15);
+    color: #f4ebd0;
+    animation: scaleUpModal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.star-popup-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #f6e7a8;
+    margin-bottom: 15px;
+}
+
+.star-popup-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.8;
+    color: #d9bd83;
+    margin-bottom: 25px;
+}

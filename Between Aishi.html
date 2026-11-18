@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#F6E7A8">
+    <meta name="description" content="A little place made with care, filled with letters, photographs, and memories.">
+
+    <title>Between Aishi ♡</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 2. RELATIONSHIP MILESTONE TICKER & RANDOM MEMORY BAR -->
+    <div class="milestone-ribbon" id="milestone-ribbon">
+        <div class="milestone-counter">
+            <span class="milestone-eyebrow">Counting every moment together</span>
+            <div class="milestone-digits" id="milestone-digits">
+                <span><strong id="ms-days">0</strong>d</span>
+                <span><strong id="ms-hours">00</strong>h</span>
+                <span><strong id="ms-mins">00</strong>m</span>
+                <span><strong id="ms-secs">00</strong>s</span>
+            </div>
+        </div>
+        <button type="button" class="random-memory-btn" id="random-memory-btn">
+            ✨ Pull a Surprise Memory
+        </button>
+    </div>
+
+    <!-- 3. INTERACTIVE 3D FLIPPABLE POLAROID LIGHTBOX MODAL -->
+    <div class="polaroid-lightbox" id="polaroid-lightbox" aria-hidden="true" hidden>
+        <div class="polaroid-lightbox-backdrop" id="polaroid-lightbox-close"></div>
+        <div class="polaroid-flip-stage">
+            <div class="polaroid-flip-card" id="polaroid-flip-card">
+                <!-- Front of Polaroid -->
+                <div class="polaroid-face polaroid-front">
+                    <img id="lightbox-img" src="" alt="Memory snapshot">
+                    <p class="lightbox-caption" id="lightbox-caption"></p>
+                </div>
+                <!-- Back of Polaroid (Secret Handwritten Note) -->
+                <div class="polaroid-face polaroid-back">
+                    <span class="polaroid-back-stamp">BETWEEN AISHI • ARCHIVE</span>
+                    <p class="polaroid-back-date" id="lightbox-date"></p>
+                    <p class="polaroid-back-note" id="lightbox-note"></p>
+                    <span class="polaroid-back-sign">♡ Forever yours</span>
+                </div>
+            </div>
+            <div class="polaroid-lightbox-controls">
+                <button type="button" id="flip-polaroid-btn">↻ Flip Photo</button>
+                <button type="button" id="close-polaroid-btn">✕ Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VINTAGE VINYL MUSIC PLAYER WIDGET -->
+    <div class="vinyl-player-widget" id="music-widget">
+        <audio id="bg-music" loop preload="auto">
+            <source src="co-pilot.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="vinyl-player-card">
+            <!-- Rotating Vinyl Disc -->
+            <div class="vinyl-disc" id="vinyl-disc">
+                <div class="vinyl-grooves"></div>
+                <div class="vinyl-label">
+                    <span class="vinyl-center-dot">♡</span>
+                </div>
+            </div>
+
+            <!-- Song Info & Progress Tracker -->
+            <div class="player-info">
+                <div class="song-meta">
+                    <span class="song-title" id="song-title">Co-Pilot</span>
+                    <span class="song-artist" id="song-artist">Just Hush</span>
+                </div>
+
+                <!-- Progress Bar / Timeline -->
+                <div class="player-progress-container">
+                    <span id="current-time">0:00</span>
+                    <div class="progress-bar-bg" id="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                    </div>
+                    <span id="total-duration">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOADING SCREEN -->
+    <div
+        class="loading-screen"
+        id="loading-screen"
+        role="status"
+        aria-label="Loading Between Aishi"
+    >
+        <div class="loading-card">
+            <span class="loading-character">🍮</span>
+            <p class="eyebrow">A LITTLE PLACE, JUST FOR YOU</p>
+            <h1>Between Aishi</h1>
+            <p>Gathering a few little memories...</p>
+            <div class="loading-progress"></div>
+            <span class="loading-caption">✿ &nbsp; ♡ &nbsp; ✿</span>
+        </div>
+    </div>
+
+
+    <main id="app">
+
+        <!-- =====================================
+             LOGIN SCREEN
+        ====================================== -->
+
+        <section class="login-screen" aria-label="Login">
+            <!-- Decorative stickers -->
+            <div class="sticker sticker-pudding" aria-hidden="true">🍮</div>
+            <div class="sticker sticker-cloud" aria-hidden="true">☁️</div>
+            <div class="sticker sticker-bunny" aria-hidden="true">🐰</div>
+            <div class="sticker sticker-bow" aria-hidden="true">🎀</div>
+
+            <!-- Login card -->
+            <div class="login-card">
+                <div class="small-decoration" aria-hidden="true">
+                    ✿ &nbsp; ♡ &nbsp; ✿
+                </div>
+                <p class="eyebrow">A LITTLE PLACE, JUST FOR YOU</p>
+                <h1>Between Aishi</h1>
+                <p class="subtitle">
+                    Some things deserve a place to stay.
+                </p>
+                <div class="divider" aria-hidden="true">
+                    <span>✧</span>
+                </div>
+
+                <form id="login-form">
+                    <label for="username">Your username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <label for="password">Your password</label>
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button
+                            type="button"
+                            id="toggle-password"
+                            class="show-password"
+                            aria-label="Show password"
+                        >
+                            Show
+                        </button>
+                    </div>
+
+                    <p
+                        id="login-message"
+                        class="login-message"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+                    <button type="submit" class="login-button">
+                        Enter your little space <span>♡</span>
+                    </button>
+                </form>
+
+                <p class="bottom-note">
+                    Made with care, one page at a time.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             WELCOME LETTER SCREEN
+        ====================================== -->
+
+        <section
+            class="welcome-screen"
+            id="welcome-screen"
+            aria-labelledby="welcome-title"
+            hidden
+        >
+            <div class="welcome-decoration" aria-hidden="true">
+                ✿ &nbsp; ♡ &nbsp; ✿
+            </div>
+
+            <article class="welcome-letter">
+                <p class="letter-label">A LETTER FOR YOU</p>
+                <h2 id="welcome-title">Dear Aishi,</h2>
+                <div class="letter-divider" aria-hidden="true">✧</div>
+
+                <div class="letter-content">
+                    <p>
+                        If you're reading this, then you've made it
+                        into this little space I created for you.
+                    </p>
+                    <p>
+                        I made Between Aishi because there were
+                        thoughts, memories, and words I wanted to
+                        give a place of their own.
+                    </p>
+                    <p>
+                        Inside these pages, you'll find letters,
+                        little reminders, photographs, and pieces
+                        of moments that once meant something to us.
+                    </p>
+                    <p>
+                        There's no rush to read everything, and
+                        there's no expectation for you to respond.
+                        Take your time and explore only what you wish.
+                    </p>
+                    <p class="letter-ending">
+                        I hope you find something meaningful here.
+                    </p>
+                </div>
+
+                <div class="letter-signature">
+                    With care,<br>
+                    <span>From someone who made this for you ♡</span>
+                </div>
+
+                <button id="continue-button" class="continue-button">
+                    Explore the pages <span>→</span>
+                </button>
+            </article>
+        </section>
+
+
+        <!-- =====================================
+             MAIN COLLECTION PAGE
+        ====================================== -->
+
+        <section
+            class="collection-screen"
+            id="collection-screen"
+            aria-labelledby="collection-title"
+            hidden
+        >
+            <header class="collection-header">
+                <p class="collection-subtitle">
+                    A LITTLE PLACE MADE FOR YOU
+                </p>
+                <h1 id="collection-title">Between Aishi</h1>
+                <p class="collection-description">
+                    Some things are better kept in pages,
+                    photographs, and little memories.
+                </p>
+            </header>
+
+            <div class="collection-intro">
+                <span class="intro-decoration" aria-hidden="true">✿</span>
+                <h2>Where would you like to begin?</h2>
+                <p>
+                    Take your time. There's no particular order to these pages.
+                </p>
+            </div>
+
+            <div class="collection-grid">
+                <!-- SECTION 01 -->
+                <article class="collection-card">
+                    <span class="card-sticker" aria-hidden="true">✉️</span>
+                    <p class="card-number">01 · LETTERS</p>
+                    <h3>The Unspoken Pages</h3>
+                    <p>Words I couldn't always find the courage to say.</p>
+                    <button class="open-section-button" data-section="unspoken">
+                        Open pages →
+                    </button>
+                </article>
+
+                <!-- SECTION 02 -->
+                <article class="collection-card">
+                    <span class="card-sticker" aria-hidden="true">🍯</span>
+                    <p class="card-number">02 · LITTLE REMINDERS</p>
+                    <h3>Letters for Every Feeling</h3>
+                    <p>Little words for whatever kind of day you're having.</p>
+                    <button class="open-section-button" data-section="feelings">
+                        Open jars →
+                    </button>
+                </article>
+
+                <!-- SECTION 03 -->
+                <article class="collection-card">
+                    <span class="card-sticker" aria-hidden="true">📷</span>
+                    <p class="card-number">03 · PHOTOGRAPHS</p>
+                    <h3>Our Little Archive</h3>
+                    <p>A collection of moments worth remembering.</p>
+                    <button class="open-section-button" data-section="archive">
+                        Open album →
+                    </button>
+                </article>
+
+                <!-- SECTION 04 -->
+                <article class="collection-card">
+                    <span class="card-sticker" aria-hidden="true">🎀</span>
+                    <p class="card-number">04 · FINAL NOTES</p>
+                    <h3>A Note for You</h3>
+                    <p>A few more things I'd like to leave here.</p>
+                    <button class="open-section-button" data-section="final-notes">
+                        Open letters →
+                    </button>
+                </article>
+            </div>
+
+            <footer class="collection-footer">
+                <p>Made with care, one page at a time ♡</p>
+            </footer>
+        </section>
+
+
+        <!-- =====================================
+             01 · THE UNSPOKEN PAGES (20 ENVELOPES)
+        ====================================== -->
+
+        <section
+            class="unspoken-screen"
+            id="unspoken-screen"
+            aria-labelledby="unspoken-title"
+            hidden
+        >
+            <header class="section-header">
+                <button class="back-button" id="back-to-collection">
+                    ← Back to collection
+                </button>
+                <p class="section-label">
+                    A COLLECTION OF UNSENT WORDS
+                </p>
+                <h2 id="unspoken-title">The Unspoken Pages</h2>
+                <p>Some words took longer to find their place.</p>
+            </header>
+
+            <!-- ENVELOPE COLLECTION -->
+            <div class="envelope-grid" id="envelope-grid">
+                <button class="envelope-card" data-letter="0">
+                    <span class="envelope-title">1. The Words I Swallowed</span>
+                    <span class="envelope-date">Written honestly</span>
+                </button>
+                <button class="envelope-card" data-letter="1">
+                    <span class="envelope-title">2. What I Never Got to Explain</span>
+                    <span class="envelope-date">For the lingering silence</span>
+                </button>
+                <button class="envelope-card" data-letter="2">
+                    <span class="envelope-title">3. When Promises Felt Like Heavy Air</span>
+                    <span class="envelope-date">On empty words</span>
+                </button>
+                <button class="envelope-card" data-letter="3">
+                    <span class="envelope-title">4. Bakit Kailangan Pang Humingi ng Oras?</span>
+                    <span class="envelope-date">A quiet bout of tampo</span>
+                </button>
+                <button class="envelope-card" data-letter="4">
+                    <span class="envelope-title">5. The Weight of Waiting</span>
+                    <span class="envelope-date">Stuck in anticipation</span>
+                </button>
+                <button class="envelope-card" data-letter="5">
+                    <span class="envelope-title">6. When I Still Had So Much to Say</span>
+                    <span class="envelope-date">Fragments of us</span>
+                </button>
+                <button class="envelope-card" data-letter="6">
+                    <span class="envelope-title">7. The Frustration of Unmatched Effort</span>
+                    <span class="envelope-date">When trying feels one-sided</span>
+                </button>
+                <button class="envelope-card" data-letter="7">
+                    <span class="envelope-title">8. Nakakapagod Din Pala</span>
+                    <span class="envelope-date">Quiet exhaustion</span>
+                </button>
+                <button class="envelope-card" data-letter="8">
+                    <span class="envelope-title">9. The Illusions We Build</span>
+                    <span class="envelope-date">Living in potential</span>
+                </button>
+                <button class="envelope-card" data-letter="9">
+                    <span class="envelope-title">10. The Things I Couldn't Change</span>
+                    <span class="envelope-date">Radical acceptance</span>
+                </button>
+                <button class="envelope-card" data-letter="10">
+                    <span class="envelope-title">11. Parang Hangin Lang</span>
+                    <span class="envelope-date">Feeling dismissed</span>
+                </button>
+                <button class="envelope-card" data-letter="11">
+                    <span class="envelope-title">12. The Echoes of 'I Swear'</span>
+                    <span class="envelope-date">Broken vows</span>
+                </button>
+                <button class="envelope-card" data-letter="12">
+                    <span class="envelope-title">13. The Quiet Drift</span>
+                    <span class="envelope-date">Slow disconnection</span>
+                </button>
+                <button class="envelope-card" data-letter="13">
+                    <span class="envelope-title">14. Bakit Ba Ako Nagtitiis?</span>
+                    <span class="envelope-date">Self-reflection in sadness</span>
+                </button>
+                <button class="envelope-card" data-letter="14">
+                    <span class="envelope-title">15. What Loving You Meant</span>
+                    <span class="envelope-date">Looking back honestly</span>
+                </button>
+                <button class="envelope-card" data-letter="15">
+                    <span class="envelope-title">16. The Unfinished Conversations</span>
+                    <span class="envelope-date">Midnight thoughts</span>
+                </button>
+                <button class="envelope-card" data-letter="16">
+                    <span class="envelope-title">17. The Memory of Your Effort</span>
+                    <span class="envelope-date">Contrast of past and present</span>
+                </button>
+                <button class="envelope-card" data-letter="17">
+                    <span class="envelope-title">18. Sana Naging Totoo</span>
+                    <span class="envelope-date">Mourning unfulfilled dreams</span>
+                </button>
+                <button class="envelope-card" data-letter="18">
+                    <span class="envelope-title">19. Releasing the Ghost</span>
+                    <span class="envelope-date">Finding peace in letting go</span>
+                </button>
+                <button class="envelope-card" data-letter="19">
+                    <span class="envelope-title">20. The Last Thing I Wanted You to Know</span>
+                    <span class="envelope-date">Final closing note</span>
+                </button>
+            </div>
+
+            <!-- LETTER VIEWER -->
+            <article
+                class="letter-viewer"
+                id="letter-viewer"
+                aria-labelledby="opened-letter-title"
+                hidden
+            >
+                <div class="letter-paper">
+                    <p class="letter-paper-label">
+                        A LETTER FROM THE UNSPOKEN PAGES
+                    </p>
+                    <div class="letter-paper-decoration" aria-hidden="true">
+                        ✧ ───── ♡ ───── ✧
+                    </div>
+                    <h3 id="opened-letter-title">Letter title</h3>
+                    <div
+                        class="letter-paper-content"
+                        id="opened-letter-content"
+                    ></div>
+                    <p class="letter-paper-ending">
+                        With care, ♡
+                    </p>
+                </div>
+
+                <div class="letter-navigation">
+                    <button id="previous-letter">← Previous</button>
+                    <span id="letter-counter">1 of 20</span>
+                    <button id="next-letter">Next →</button>
+                </div>
+
+                <button class="close-letter-button" id="close-letter">
+                    Close letter
+                </button>
+            </article>
+        </section>
+
+
+        <!-- =====================================
+             02 · LETTERS FOR EVERY FEELING
+        ====================================== -->
+
+        <section
+            class="feelings-screen"
+            id="feelings-screen"
+            aria-labelledby="feelings-title"
+            hidden
+        >
+            <header class="section-header">
+                <button class="library-button" id="open-jar-library">
+                    📚 My Jar Library
+                </button>
+                <button class="back-button" id="back-to-collection-feelings">
+                    ← Back to collection
+                </button>
+                <p class="section-label">
+                    A LITTLE SOMETHING FOR YOUR HEART
+                </p>
+                <h2 id="feelings-title">
+                    Letters for Every Feeling
+                </h2>
+                <p>
+                    Whatever you're feeling, there's a little note waiting here.
+                </p>
+            </header>
+
+            <!-- FEELING JARS -->
+            <div class="jar-grid" id="jar-grid">
+                <button class="jar-card" data-feeling="0">
+                    <span class="jar-icon" aria-hidden="true">🍯</span>
+                    <span class="jar-title">When You're Sad</span>
+                    <span class="jar-caption">A little comfort</span>
+                </button>
+                <button class="jar-card" data-feeling="1">
+                    <span class="jar-icon" aria-hidden="true">🌼</span>
+                    <span class="jar-title">When You're Happy</span>
+                    <span class="jar-caption">Keep that smile</span>
+                </button>
+                <button class="jar-card" data-feeling="2">
+                    <span class="jar-icon" aria-hidden="true">☁️</span>
+                    <span class="jar-title">When You're Lonely</span>
+                    <span class="jar-caption">A gentle reminder</span>
+                </button>
+                <button class="jar-card" data-feeling="3">
+                    <span class="jar-icon" aria-hidden="true">🦋</span>
+                    <span class="jar-title">When You're Lost</span>
+                    <span class="jar-caption">Take your time</span>
+                </button>
+                <button class="jar-card" data-feeling="4">
+                    <span class="jar-icon" aria-hidden="true">🌷</span>
+                    <span class="jar-title">When You're Tired</span>
+                    <span class="jar-caption">Rest a little</span>
+                </button>
+                <button class="jar-card" data-feeling="5">
+                    <span class="jar-icon" aria-hidden="true">⭐</span>
+                    <span class="jar-title">When You Need Courage</span>
+                    <span class="jar-caption">You've got this</span>
+                </button>
+            </div>
+
+            <!-- OPENED JAR LETTER -->
+            <article
+                class="feeling-letter"
+                id="feeling-letter"
+                aria-labelledby="feeling-title"
+                hidden
+            >
+                <div class="opened-jar" aria-hidden="true">
+                    <span class="jar-lid" id="jar-lid">⌒</span>
+                    <span class="opened-jar-icon">🍯</span>
+                </div>
+
+                <div class="feeling-paper">
+                    <p class="letter-paper-label">
+                        A LITTLE NOTE FOR YOU
+                    </p>
+                    <div class="letter-paper-decoration" aria-hidden="true">
+                        ✧ ───── ♡ ───── ✧
+                    </div>
+                    <h3 id="feeling-title">When You're Sad</h3>
+                    <div
+                        class="feeling-content"
+                        id="feeling-content"
+                        aria-live="polite"
+                    ></div>
+                    <p class="letter-paper-ending">
+                        Take care of yourself. ♡
+                    </p>
+                </div>
+
+                <button class="close-feeling-button" id="close-feeling">
+                    Put the letter back
+                </button>
+            </article>
+
+            <!-- =================================
+                 JAR LIBRARY
+            ================================== -->
+            <section
+                class="jar-library"
+                id="jar-library"
+                aria-labelledby="jar-library-title"
+                hidden
+            >
+                <header class="library-header">
+                    <p class="section-label">
+                        EVERY LITTLE THING YOU'VE FOUND
+                    </p>
+                    <h2 id="jar-library-title">My Jar Library</h2>
+                    <p>A little shelf of words you can always return to.</p>
+                </header>
+
+                <div class="library-stats">
+                    <div class="library-stat">
+                        <strong id="library-total">0</strong>
+                        <span>Letters collected</span>
+                    </div>
+                    <div class="library-stat">
+                        <strong id="library-rare">0</strong>
+                        <span>Rare letters</span>
+                    </div>
+                </div>
+
+                <div class="library-shelf" id="library-shelf"></div>
+
+                <p class="library-empty" id="library-empty">
+                    Your little shelf is waiting for its first letter. ♡
+                </p>
+
+                <button class="close-library-button" id="close-jar-library">
+                    ← Back to the jars
+                </button>
+            </section>
+
+            <!-- LIBRARY LETTER VIEWER -->
+            <article
+                class="library-letter-viewer"
+                id="library-letter-viewer"
+                aria-label="Collected letter"
+                hidden
+            >
+                <div class="library-letter-paper">
+                    <p class="letter-paper-label">
+                        FROM YOUR LITTLE JAR LIBRARY
+                    </p>
+                    <div class="letter-paper-decoration" aria-hidden="true">
+                        ✧ ───── ♡ ───── ✧
+                    </div>
+                    <p class="library-letter-category" id="library-letter-category"></p>
+                    <div id="library-letter-message" class="library-letter-message"></div>
+                    <p class="letter-paper-ending">
+                        A little memory to keep. ♡
+                    </p>
+                </div>
+
+                <button class="close-library-letter" id="close-library-letter">
+                    ← Back to my library
+                </button>
+            </article>
+        </section>
+
+
+        <!-- =====================================
+             03 · OUR LITTLE ARCHIVE
+        ====================================== -->
+
+        <section
+            class="archive-screen"
+            id="archive-screen"
+            aria-labelledby="archive-title"
+            hidden
+        >
+            <header class="section-header">
+                <button class="back-button" id="back-to-collection-archive">
+                    ← Back to collection
+                </button>
+                <p class="section-label">
+                    A COLLECTION OF LITTLE MEMORIES
+                </p>
+                <h2 id="archive-title">Our Little Archive</h2>
+                <p>Some moments deserve to be kept somewhere special.</p>
+            </header>
+
+            <!-- PHOTO BOOK -->
+            <div class="photo-book-container">
+                <div class="photo-book" id="photo-book">
+                    <div class="photo-book-heading">
+                        <span id="archive-page-number">CHAPTER I</span>
+                        <h3 id="archive-page-title">Snapshots of Us</h3>
+                        <p id="archive-page-subtitle">A collection of moments worth remembering.</p>
+                    </div>
+
+                    <!-- Polaroid Grid -->
+                    <div class="photo-grid" id="photo-grid">
+                        <!-- Dynamically populated by script.js -->
+                    </div>
+
+                    <!-- Photo Book Navigation -->
+                    <div class="photo-book-navigation">
+                        <button type="button" id="previous-photo-page">← Previous Page</button>
+                        <span id="photo-page-counter">1 / 1</span>
+                        <button type="button" id="next-photo-page">Next Page →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             04 · FINAL NOTES / A NOTE FOR YOU
+        ====================================== -->
+
+        <section
+            class="final-notes-screen"
+            id="final-notes-screen"
+            aria-labelledby="final-notes-title"
+            hidden
+        >
+            <header class="section-header">
+                <button class="back-button" id="back-to-collection-final">
+                    ← Back to collection
+                </button>
+                <p class="section-label">
+                    FINAL REFLECTION
+                </p>
+                <h2 id="final-notes-title">A Note for You</h2>
+                <p>A few more things I'd like to leave right here.</p>
+            </header>
+
+            <article class="final-note-card">
+                <div class="letter-paper">
+                    <p class="letter-paper-label" id="final-note-label">BEFORE YOU GO</p>
+                    <div class="letter-paper-decoration" aria-hidden="true">
+                        ✧ ───── ♡ ───── ✧
+                    </div>
+                    <h3 id="final-note-heading">To Aishi,</h3>
+                    
+                    <div id="final-note-content">
+                        <!-- Dynamically populated by script.js -->
+                    </div>
+
+                    <p class="letter-paper-ending">
+                        Always wishing you the best, ♡
+                    </p>
+                </div>
+            </article>
+
+            <!-- Button para mag-draw ng iba pang final note -->
+            <div class="final-note-actions" style="text-align: center; margin-top: 30px;">
+                <button type="button" class="random-memory-btn" id="pull-another-note-btn">
+                    ✨ Read Another Note
+                </button>
+            </div>
+        </section>
+        
+<!-- NEW COLLECTION CARD: CONSTELLATION OF US -->
+<div class="collection-card">
+    <span class="card-sticker">✨</span>
+    <span class="card-number">SECTION 05</span>
+    <h3>Constellation of Us</h3>
+    <p>A map of the quiet stars, the moments that changed everything, and our connection on April 17, 2026.</p>
+    <button type="button" class="open-section-button" data-section="constellation">Explore the Stars ✦</button>
+</div>
+
+    <!-- 1. CANDLELIGHT / DAYLIGHT AMBIENT TOGGLE BUTTON -->
+    <button type="button" class="candlelight-toggle" id="candlelight-toggle" aria-label="Toggle Candlelight Mode" title="Switch Lighting">
+        <span class="toggle-icon" id="candlelight-icon">🕯️</span>
+        <span class="toggle-label" id="candlelight-label">Candlelight</span>
+    </button>
+    
+<!-- CONSTELLATION SCREEN -->
+<section id="constellation-screen" class="constellation-screen" hidden>
+    <div class="section-header">
+        <button type="button" id="back-to-collection-constellation" class="back-button">← Back to Collection</button>
+        <span class="section-label">Section 05 • The Star Map</span>
+        <h2>Constellation of Us</h2>
+        <p>Click on any glowing star in our sky to uncover a piece of our story.</p>
+    </div>
+
+    <div class="star-map-canvas" id="star-map-canvas">
+        <!-- Glowing Stars will be dynamically generated here -->
+    </div>
+</section>
+
+    </main>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+</body>
+
+</html>
