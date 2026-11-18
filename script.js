@@ -1216,10 +1216,10 @@ const flipPolaroidBtn = $("#flip-polaroid-btn");
 const polaroidFlipCard = $("#polaroid-flip-card");
 
 const archivePhotos = [
-    { image: "images/memories-01.jpg", caption: "A little memory", date: "A day to remember", note: "Every moment with you feels like an old favorite film." },
-    { image: "images/memories-02.jpg", caption: "One of my favorites", date: "A day to remember", note: "The little things you do without noticing mean everything." },
-    { image: "images/memories-03.jpg", caption: "Something worth keeping", date: "A day to remember", note: "If I could replay one afternoon, it would be this one." },
-    { image: "images/memories-04.jpg", caption: "A moment with you", date: "A day to remember", note: "Some places carry your laugh long after we leave." }
+    { image: "Images/memories-01.jpg", caption: "A little memory", date: "A day to remember", note: "Every moment with you feels like an old favorite film." },
+    { image: "Images/memories-02.jpg", caption: "One of my favorites", date: "A day to remember", note: "The little things you do without noticing mean everything." },
+    { image: "Images/memories-03.jpg", caption: "Something worth keeping", date: "A day to remember", note: "If I could replay one afternoon, it would be this one." },
+    { image: "Images/memories-04.jpg", caption: "A moment with you", date: "A day to remember", note: "Some places carry your laugh long after we leave." }
 ];
 
 const photosPerPage = 4;
